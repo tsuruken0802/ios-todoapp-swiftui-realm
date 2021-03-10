@@ -20,6 +20,7 @@
 		03DB776625F8945000BC4828 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB776525F8945000BC4828 /* TodoListViewModel.swift */; };
 		03DB776F25F89D3300BC4828 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 03DB776E25F89D3300BC4828 /* Realm */; };
 		03DB777125F89D3300BC4828 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 03DB777025F89D3300BC4828 /* RealmSwift */; };
+		03DB777E25F8AF8B00BC4828 /* TodoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB777D25F8AF8B00BC4828 /* TodoItemViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		03DB775A25F8837F00BC4828 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		03DB775F25F8862300BC4828 /* TodoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepository.swift; sourceTree = "<group>"; };
 		03DB776525F8945000BC4828 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
+		03DB777D25F8AF8B00BC4828 /* TodoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				03DB776525F8945000BC4828 /* TodoListViewModel.swift */,
+				03DB777D25F8AF8B00BC4828 /* TodoItemViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				03DB774F25F86E8300BC4828 /* CheckBox.swift in Sources */,
 				0338818925F7BA2900BF8637 /* TodoApp.swift in Sources */,
 				03DB776625F8945000BC4828 /* TodoListViewModel.swift in Sources */,
+				03DB777E25F8AF8B00BC4828 /* TodoItemViewModel.swift in Sources */,
 				03DB774125F86A8E00BC4828 /* TodoListView.swift in Sources */,
 				03DB774925F86CA200BC4828 /* TodoItemView.swift in Sources */,
 				03DB775B25F8837F00BC4828 /* Todo.swift in Sources */,

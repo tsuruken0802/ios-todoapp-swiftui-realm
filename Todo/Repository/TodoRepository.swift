@@ -9,6 +9,8 @@ import Foundation
 
 protocol TodoRepository {
     func getTodos() -> [Todo]
+    
+    func addTodo(todo: Todo)
 }
 
 class TodoRepositoryStub: TodoRepository {
@@ -19,6 +21,10 @@ class TodoRepositoryStub: TodoRepository {
             todos.append(todo)
         }
         return todos
+    }
+    
+    func addTodo(todo: Todo) {
+        
     }
 }
 

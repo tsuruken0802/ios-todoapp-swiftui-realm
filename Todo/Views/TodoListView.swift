@@ -13,16 +13,26 @@ struct TodoListView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.todos, id: \.id) { todo in
-                    TodoItemView(todo: todo)
+                ForEach(viewModel.todos) { viewModel in
+                    TodoItemView(viewModel: viewModel)
                 }
+                TodoItemView(viewModel: TodoItemViewModel(todo: Todo()) {
+                    
+                } onCommitText: {
+                        
+                })
             }
             .navigationTitle("Todos")
-
+            .toolbar(content: {
+                ToolbarItemGroup {
+                    Button(action: {
+                        
+                    }, label: {
+                        Image(systemName: "plus.circle")
+                    })
+                }
+            })
         }
-        .navigationBarItems(trailing: Button(action: {}, label: {
-            Text("Button")
-        }))
     }
 }
 

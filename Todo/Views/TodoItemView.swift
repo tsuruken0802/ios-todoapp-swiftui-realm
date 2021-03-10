@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct TodoItemView: View {
-    let todo: Todo
+    let viewModel: TodoItemViewModel
+    @State var text: String
+    
+    init(viewModel: TodoItemViewModel) {
+        self.viewModel = viewModel
+        self._text = State<String>(initialValue: viewModel.todo.name)
+    }
     
     var body: some View {
         HStack {
-            Text(todo.name)
+            TextField("Todoを入力してください", text: $text, onCommit: viewModel.onCommitText)
             Spacer()
-            CheckBox(isChecked: todo.done, didTap: {
-                
-            })
+            CheckBox(isChecked: viewModel.todo.done, didTap: viewModel.didTapCheck)
         }
         .padding()
     }
@@ -24,7 +28,11 @@ struct TodoItemView: View {
 
 struct TodoItemView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoItemView(todo: Todo(name: "買い物をする", done: true))
-            .frame(height: 80, alignment: .center)
+        let viewModel = TodoItemViewModel(todo: Todo()) {
+            
+        } onCommitText: {
+                
+        }
+        TodoItemView(viewModel: viewModel)
     }
 }
