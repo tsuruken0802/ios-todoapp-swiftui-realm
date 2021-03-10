@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct TodoListView: View {
+    @ObservedObject private var viewModel: TodoListViewModel = TodoListViewModel(repository: TodoRepositoryStub())
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(0 ..< 3) { _ in
+                ForEach(0 ..< 4) { _ in
                     TodoItemView()
                 }
             }

@@ -15,6 +15,9 @@
 		03DB774125F86A8E00BC4828 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB774025F86A8E00BC4828 /* TodoListView.swift */; };
 		03DB774925F86CA200BC4828 /* TodoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB774825F86CA200BC4828 /* TodoItemView.swift */; };
 		03DB774F25F86E8300BC4828 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB774E25F86E8300BC4828 /* CheckBox.swift */; };
+		03DB775B25F8837F00BC4828 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB775A25F8837F00BC4828 /* Todo.swift */; };
+		03DB776025F8862300BC4828 /* TodoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB775F25F8862300BC4828 /* TodoRepository.swift */; };
+		03DB776625F8945000BC4828 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB776525F8945000BC4828 /* TodoListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		03DB774025F86A8E00BC4828 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 		03DB774825F86CA200BC4828 /* TodoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemView.swift; sourceTree = "<group>"; };
 		03DB774E25F86E8300BC4828 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		03DB775A25F8837F00BC4828 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		03DB775F25F8862300BC4828 /* TodoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepository.swift; sourceTree = "<group>"; };
+		03DB776525F8945000BC4828 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 		0338818725F7BA2900BF8637 /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				03DB775925F8837600BC4828 /* Entity */,
 				03DB773F25F86A7400BC4828 /* Repository */,
 				03DB773E25F86A6F00BC4828 /* ViewModel */,
 				03DB773D25F86A6900BC4828 /* Views */,
@@ -149,6 +156,7 @@
 		03DB773E25F86A6F00BC4828 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				03DB776525F8945000BC4828 /* TodoListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -156,6 +164,7 @@
 		03DB773F25F86A7400BC4828 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				03DB775F25F8862300BC4828 /* TodoRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -166,6 +175,14 @@
 				03DB774E25F86E8300BC4828 /* CheckBox.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		03DB775925F8837600BC4828 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				03DB775A25F8837F00BC4828 /* Todo.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,8 +316,11 @@
 			files = (
 				03DB774F25F86E8300BC4828 /* CheckBox.swift in Sources */,
 				0338818925F7BA2900BF8637 /* TodoApp.swift in Sources */,
+				03DB776625F8945000BC4828 /* TodoListViewModel.swift in Sources */,
 				03DB774125F86A8E00BC4828 /* TodoListView.swift in Sources */,
 				03DB774925F86CA200BC4828 /* TodoItemView.swift in Sources */,
+				03DB775B25F8837F00BC4828 /* Todo.swift in Sources */,
+				03DB776025F8862300BC4828 /* TodoRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
