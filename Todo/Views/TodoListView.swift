@@ -10,9 +10,9 @@ import SwiftUI
 struct TodoListView: View {
     var body: some View {
         NavigationView {
-            VStack {
-                List {
-                    
+            List {
+                ForEach(0 ..< 3) { _ in
+                    TodoItemView()
                 }
             }
             .navigationTitle("Todos")

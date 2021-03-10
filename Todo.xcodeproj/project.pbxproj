@@ -13,6 +13,8 @@
 		0338819B25F7BA2A00BF8637 /* TodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0338819A25F7BA2A00BF8637 /* TodoTests.swift */; };
 		033881A625F7BA2A00BF8637 /* TodoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033881A525F7BA2A00BF8637 /* TodoUITests.swift */; };
 		03DB774125F86A8E00BC4828 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB774025F86A8E00BC4828 /* TodoListView.swift */; };
+		03DB774925F86CA200BC4828 /* TodoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB774825F86CA200BC4828 /* TodoItemView.swift */; };
+		03DB774F25F86E8300BC4828 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB774E25F86E8300BC4828 /* CheckBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		033881A525F7BA2A00BF8637 /* TodoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUITests.swift; sourceTree = "<group>"; };
 		033881A725F7BA2A00BF8637 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03DB774025F86A8E00BC4828 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
+		03DB774825F86CA200BC4828 /* TodoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemView.swift; sourceTree = "<group>"; };
+		03DB774E25F86E8300BC4828 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +139,9 @@
 		03DB773D25F86A6900BC4828 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				03DB774D25F86E7700BC4828 /* Common */,
 				03DB774025F86A8E00BC4828 /* TodoListView.swift */,
+				03DB774825F86CA200BC4828 /* TodoItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -152,6 +158,14 @@
 			children = (
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		03DB774D25F86E7700BC4828 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				03DB774E25F86E8300BC4828 /* CheckBox.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,8 +297,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03DB774F25F86E8300BC4828 /* CheckBox.swift in Sources */,
 				0338818925F7BA2900BF8637 /* TodoApp.swift in Sources */,
 				03DB774125F86A8E00BC4828 /* TodoListView.swift in Sources */,
+				03DB774925F86CA200BC4828 /* TodoItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
