@@ -6,9 +6,18 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Todo {
-    var id: String = UUID().uuidString
-    var name: String = ""
-    var done: Bool = false
+class Todo: Object {
+    @objc dynamic var id = ObjectId.generate()
+    @objc dynamic var name: String = ""
+    @objc dynamic var done: Bool = false
+    
+    init(name: String, done: Bool) {
+        self.name = name
+        self.done = done
+    }
+    
+    override init() {
+    }
 }
