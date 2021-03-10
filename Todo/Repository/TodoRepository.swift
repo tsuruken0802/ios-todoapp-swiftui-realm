@@ -16,7 +16,7 @@ protocol TodoRepository {
 class TodoRepositoryStub: TodoRepository {
     func getTodos() -> [Todo] {
         var todos: [Todo] = []
-        for i in 0 ..< 10 {
+        for i in 0 ..< 3 {
             let todo: Todo = .init(name: "\(i)番目のTodo", done: false)
             todos.append(todo)
         }

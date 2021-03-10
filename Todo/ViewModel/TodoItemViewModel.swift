@@ -12,9 +12,9 @@ class TodoItemViewModel: ObservableObject, Identifiable {
     let todo: Todo
     @Published var text: String
     let didTapCheck: () -> Void
-    let onCommitText: () -> Void
+    let onCommitText: (_ text: String) -> Void
     
-    init(todo: Todo, didTapCheck: @escaping () -> Void, onCommitText: @escaping () -> Void) {
+    init(todo: Todo, didTapCheck: @escaping () -> Void, onCommitText: @escaping (_ text: String) -> Void) {
         self.todo = todo
         self._text = Published<String>(initialValue: todo.name)
         self.didTapCheck = didTapCheck

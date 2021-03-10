@@ -16,11 +16,11 @@ struct TodoListView: View {
                 ForEach(viewModel.todos) { viewModel in
                     TodoItemView(viewModel: viewModel)
                 }
-                TodoItemView(viewModel: TodoItemViewModel(todo: Todo()) {
+                TodoItemView(viewModel: .init(todo: Todo(), didTapCheck: {
                     
-                } onCommitText: {
-                        
-                })
+                }, onCommitText: { text in
+                    viewModel.addTodo(name: text)
+                }))
             }
             .navigationTitle("Todos")
             .toolbar(content: {
