@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct TodoItemView: View {
+    let todo: Todo
+    
     var body: some View {
         HStack {
-            Text("買い物をする")
+            Text(todo.name)
             Spacer()
-            CheckBox(didTap: {})
+            CheckBox(isChecked: todo.done, didTap: {
+                
+            })
         }
         .padding()
     }
@@ -20,7 +24,7 @@ struct TodoItemView: View {
 
 struct TodoItemView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoItemView()
+        TodoItemView(todo: Todo(name: "買い物をする", done: true))
             .frame(height: 80, alignment: .center)
     }
 }

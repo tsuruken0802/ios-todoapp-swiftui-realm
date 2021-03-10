@@ -13,12 +13,16 @@ struct TodoListView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(0 ..< 4) { _ in
-                    TodoItemView()
+                ForEach(viewModel.todos, id: \.id) { todo in
+                    TodoItemView(todo: todo)
                 }
             }
             .navigationTitle("Todos")
+
         }
+        .navigationBarItems(trailing: Button(action: {}, label: {
+            Text("Button")
+        }))
     }
 }
 

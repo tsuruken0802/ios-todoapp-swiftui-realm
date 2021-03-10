@@ -8,6 +8,7 @@
 import Foundation
 
 struct Todo {
+    var id: String = UUID().uuidString
     var name: String = ""
     var done: Bool = false
 }
