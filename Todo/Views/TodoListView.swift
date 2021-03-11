@@ -16,13 +16,13 @@ struct TodoListView: View {
         NavigationView {
             List {
                 ForEach(todos) { todo in
-                    TodoItemView(todo: todo) { text in
-
+                    TodoItemView(todo: ObservedRealmObject<Todo>(wrappedValue: todo)) { text in
+                        
                     } didTapCheck: {
 
                     }
                 }
-                TodoItemView(todo: Todo(), onCommitText: { text in
+                TodoItemView(todo: ObservedRealmObject<Todo>(wrappedValue: Todo()), onCommitText: { text in
                     $todos.append(Todo(name: text, done: false))
                 }, didTapCheck: {
                     

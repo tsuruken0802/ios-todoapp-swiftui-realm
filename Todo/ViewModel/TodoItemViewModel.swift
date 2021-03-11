@@ -5,12 +5,15 @@
 //  Created by 鶴本賢太朗 on 2021/03/10.
 //
 
-import Foundation
+import SwiftUI
+import RealmSwift
 
 class TodoItemViewModel: ObservableObject {
-    @Published var todo: Todo
+    @ObservedRealmObject var todo: Todo
+    @Published var inputText: String
     
-    init(todo: Todo) {
-        self._todo = Published<Todo>(initialValue: todo)
+    init(todo: ObservedRealmObject<Todo>) {
+        self._todo = todo
+        self._inputText = Published<String>(initialValue: todo.wrappedValue.name)
     }
 }
