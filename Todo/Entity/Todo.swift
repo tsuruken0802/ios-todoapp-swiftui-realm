@@ -8,8 +8,8 @@
 import Foundation
 import RealmSwift
 
-class Todo: Object {
-    @objc dynamic var id = ObjectId.generate()
+class Todo: Object, ObjectKeyIdentifiable {
+    @objc dynamic var _id = ObjectId.generate()
     @objc dynamic var name: String = ""
     @objc dynamic var done: Bool = false
     
@@ -19,5 +19,9 @@ class Todo: Object {
     }
     
     override init() {
+    }
+    
+    override class func primaryKey() -> String? {
+        "_id"
     }
 }

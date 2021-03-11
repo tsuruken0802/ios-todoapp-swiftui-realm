@@ -6,21 +6,17 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol TodoRepository {
-    func getTodos() -> [Todo]
+    func getTodos() -> Results<Todo>
     
     func addTodo(todo: Todo)
 }
 
 class TodoRepositoryStub: TodoRepository {
-    func getTodos() -> [Todo] {
-        var todos: [Todo] = []
-        for i in 0 ..< 3 {
-            let todo: Todo = .init(name: "\(i)番目のTodo", done: false)
-            todos.append(todo)
-        }
-        return todos
+    func getTodos() -> Results<Todo> {
+        return try! Realm().objects(Todo.self)
     }
     
     func addTodo(todo: Todo) {
@@ -28,3 +24,12 @@ class TodoRepositoryStub: TodoRepository {
     }
 }
 
+class TodoRepositoryImpl: TodoRepository {
+    func getTodos() -> Results<Todo> {
+        return try! Realm().objects(Todo.self)
+    }
+    
+    func addTodo(todo: Todo) {
+        
+    }
+}

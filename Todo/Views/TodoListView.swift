@@ -6,21 +6,27 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct TodoListView: View {
-    @ObservedObject private var viewModel: TodoListViewModel = TodoListViewModel(repository: TodoRepositoryStub())
+//    @ObservedObject private var viewModel: TodoListViewModel = TodoListViewModel(repository: TodoRepositoryImpl())
+    @ObservedResults(Todo.self) var todos
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.todos) { viewModel in
-                    TodoItemView(viewModel: viewModel)
+                ForEach(todos) { todo in
+                    TodoItemView(todo: todo) { text in
+
+                    } didTapCheck: {
+
+                    }
                 }
-                TodoItemView(viewModel: .init(todo: Todo(), didTapCheck: {
+                TodoItemView(todo: Todo(), onCommitText: { text in
+                    $todos.append(Todo(name: text, done: false))
+                }, didTapCheck: {
                     
-                }, onCommitText: { text in
-                    viewModel.addTodo(name: text)
-                }))
+                })
             }
             .navigationTitle("Todos")
             .toolbar(content: {
