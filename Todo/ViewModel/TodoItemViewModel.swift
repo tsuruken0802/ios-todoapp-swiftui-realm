@@ -9,11 +9,9 @@ import SwiftUI
 import RealmSwift
 
 class TodoItemViewModel: ObservableObject {
-    @ObservedRealmObject var todo: Todo
-    @Published var inputText: String
+    @Published var todoDto: TodoDto
     
-    init(todo: ObservedRealmObject<Todo>) {
-        self._todo = todo
-        self._inputText = Published<String>(initialValue: todo.wrappedValue.name)
+    init(todo: Todo) {
+        self._todoDto = Published<TodoDto>(initialValue: TodoDto(name: todo.name, done: todo.done))
     }
 }

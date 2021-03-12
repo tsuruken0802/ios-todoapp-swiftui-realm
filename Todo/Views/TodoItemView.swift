@@ -10,10 +10,10 @@ import RealmSwift
 
 struct TodoItemView: View {
     @ObservedObject var viewModel: TodoItemViewModel
-    var onCommitText: (_ text: String) -> Void
-    var didTapCheck: () -> Void
+    var onCommitText: (_ todoDto: TodoDto) -> Void
+    var didTapCheck: (_ todoDto: TodoDto) -> Void
     
-    init(todo: ObservedRealmObject<Todo>, onCommitText: @escaping (_ text: String) -> Void, didTapCheck: @escaping () -> Void) {
+    init(todo: Todo, onCommitText: @escaping (_ todoDto: TodoDto) -> Void, didTapCheck: @escaping (_ todoDto: TodoDto) -> Void) {
         self.viewModel = TodoItemViewModel(todo: todo)
         self.onCommitText = onCommitText
         self.didTapCheck = didTapCheck
@@ -21,12 +21,12 @@ struct TodoItemView: View {
     
     var body: some View {
         HStack {
-            TextField("Todoを入力してください", text: $viewModel.inputText, onCommit: {
-//                onCommitText(viewModel.inputText)
+            TextField("Todoを入力してください", text: $viewModel.todoDto.name, onCommit: {
+                onCommitText(viewModel.todoDto)
             })
             Spacer()
-            CheckBox(isChecked: viewModel.todo.done, didTap: {
-                didTapCheck()
+            CheckBox(isChecked: viewModel.todoDto.done, didTap: {
+                didTapCheck(viewModel.todoDto)
             })
         }
         .padding()
@@ -35,6 +35,6 @@ struct TodoItemView: View {
 
 struct TodoItemView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoItemView(todo: ObservedRealmObject<Todo>(wrappedValue: Todo()), onCommitText: {_ in }, didTapCheck: {})
+        TodoItemView(todo: Todo(), onCommitText: {_ in }, didTapCheck: {_ in })
     }
 }

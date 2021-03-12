@@ -10,28 +10,39 @@ import RealmSwift
 
 class TodoListViewModel: ObservableObject {
     let repository: TodoRepository
-    @Published var todos: Results<Todo>!
+    private(set) var todos: Results<Todo>!
+    private var notificationToken: NotificationToken?
+    private(set) var objectWillChange: ObservableObjectPublisher = .init()
 
     init(repository: TodoRepository) {
         self.repository = repository
         loadTodos()
+        initNotification()
     }
 
     func addTodo(name: String) {
         repository.addTodo(todo: .init(name: name, done: false))
     }
-
-    func didTapCheck(index: Int) {
-
-    }
-
-    func onCommitText(index: Int, text: String) {
-
+    
+    func updateTodo(todo: Todo, dto: TodoDto) {
+        repository.updateTodo(todo: todo, dto: dto)
     }
 }
 
 extension TodoListViewModel {
     private func loadTodos() {
-        self.todos = repository.getTodos()
+        todos = repository.getTodos()
+    }
+    
+    private func initNotification() {
+        notificationToken = todos.observe({ [weak self] (change) in
+            switch change {
+            case .update(_, _, _, _):
+                self?.objectWillChange.send()
+                break
+            default:
+                break
+            }
+        })
     }
 }

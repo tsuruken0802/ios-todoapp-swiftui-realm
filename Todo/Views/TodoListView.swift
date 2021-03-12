@@ -9,22 +9,21 @@ import SwiftUI
 import RealmSwift
 
 struct TodoListView: View {
-//    @ObservedObject private var viewModel: TodoListViewModel = TodoListViewModel(repository: TodoRepositoryImpl())
-    @ObservedResults(Todo.self) var todos
+    @ObservedObject private var viewModel: TodoListViewModel = TodoListViewModel(repository: TodoRepositoryImpl())
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(todos) { todo in
-                    TodoItemView(todo: ObservedRealmObject<Todo>(wrappedValue: todo)) { text in
+                ForEach(viewModel.todos) { todo in
+                    TodoItemView(todo: todo) { dto in
+                        viewModel.updateTodo(todo: todo, dto: dto)
+                    } didTapCheck: { todoDto in
                         
-                    } didTapCheck: {
-
                     }
                 }
-                TodoItemView(todo: ObservedRealmObject<Todo>(wrappedValue: Todo()), onCommitText: { text in
-                    $todos.append(Todo(name: text, done: false))
-                }, didTapCheck: {
+                TodoItemView(todo: Todo(), onCommitText: { text in
+                    viewModel.addTodo(name: text.name)
+                }, didTapCheck: { todoDto in
                     
                 })
             }
