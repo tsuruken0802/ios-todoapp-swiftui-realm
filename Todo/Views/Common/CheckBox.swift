@@ -12,7 +12,6 @@ struct CheckBox: View {
     @Binding<Bool> var isChecked: Bool
     let didTap: () -> Void
     
-    // チェックボックスの表示
     var body: some View {
         checkImage
             .onTapGesture {
