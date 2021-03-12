@@ -16,7 +16,7 @@ struct TodoListView: View {
             List {
                 ForEach(viewModel.todos) { todo in
                     if todo.isInvalidated {
-                       EmptyView()
+                        EmptyView()
                     }
                     else {
                         TodoItemView(todo: todo) { dto in
@@ -39,15 +39,28 @@ struct TodoListView: View {
             }
             .navigationTitle("Todos")
             .toolbar(content: {
-                ToolbarItemGroup {
+                Menu(content: {
                     Button(action: {
-                        
-                    }, label: {
-                        Image(systemName: "plus.circle")
-                    })
-                }
+                        viewModel.sort = .createdAt
+                    }) {
+                        menuLabel(sort: .createdAt, label: "作成順")
+                    }
+                    Button(action: {
+                        viewModel.sort = .updatedAt
+                    }) {
+                        menuLabel(sort: .updatedAt, label: "更新順")
+                    }
+                }, label: {
+                    Image(systemName: "arrow.up.arrow.down")
+                })
             })
         }
+    }
+    
+    private func menuLabel(sort: Sort, label: String) -> some View {
+        viewModel.sort == sort ?
+            ViewBuilder.buildEither(first: Label(label, systemImage: "checkmark")):
+            ViewBuilder.buildEither(second: Text(label))
     }
 }
 
