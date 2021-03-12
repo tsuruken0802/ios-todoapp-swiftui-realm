@@ -14,12 +14,11 @@ struct CheckBox: View {
     
     // チェックボックスの表示
     var body: some View {
-        Button(action: {
-            isChecked.toggle()
-            didTap()
-        }) {
-            checkImage
-        }
+        checkImage
+            .onTapGesture {
+                isChecked.toggle()
+                didTap()
+            }
     }
     
     private var checkImage: some View {
