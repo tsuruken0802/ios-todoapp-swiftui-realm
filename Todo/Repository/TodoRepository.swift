@@ -11,7 +11,7 @@ import RealmSwift
 protocol TodoRepository {
     func getTodos(sortBy: String, ascending: Bool) -> Results<Todo>
     
-    func addTodo(todo: Todo)
+    func addTodo(dto: TodoDto)
     
     func updateTodo(todo: Todo, dto: TodoDto)
     
@@ -23,9 +23,10 @@ class TodoRepositoryImpl: TodoRepository {
         return try! Realm().objects(Todo.self).sorted(byKeyPath: sortBy, ascending: ascending)
     }
     
-    func addTodo(todo: Todo) {
+    func addTodo(dto: TodoDto) {
         let realm: Realm = try! .init()
         try! realm.write {
+            let todo: Todo = .init(name: dto.name, done: dto.done)
             realm.add(todo, update: .all)
         }
     }

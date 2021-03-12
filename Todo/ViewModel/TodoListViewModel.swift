@@ -35,8 +35,8 @@ class TodoListViewModel: ObservableObject {
         notificationToken?.invalidate()
     }
 
-    func addTodo(name: String) {
-        repository.addTodo(todo: .init(name: name, done: false))
+    func addTodo(dto: TodoDto) {
+        repository.addTodo(dto: dto)
     }
     
     func updateTodo(todo: Todo, dto: TodoDto) {

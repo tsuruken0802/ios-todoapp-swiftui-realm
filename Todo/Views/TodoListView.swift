@@ -31,8 +31,8 @@ struct TodoListView: View {
                         viewModel.deleteTodo(index: index)
                     }
                 })
-                TodoItemView(dto: TodoDto(), onCommitText: { text in
-                    viewModel.addTodo(name: text.name)
+                TodoItemView(dto: TodoDto(), onCommitText: { dto in
+                    viewModel.addTodo(dto: dto)
                 }, didTapCheck: { todoDto in
                     
                 })
