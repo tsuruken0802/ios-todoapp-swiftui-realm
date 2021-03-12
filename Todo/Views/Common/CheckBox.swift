@@ -9,12 +9,15 @@ import SwiftUI
 
 struct CheckBox: View {
     private static let length: CGFloat = 20
-    let isChecked: Bool
+    @Binding<Bool> var isChecked: Bool
     let didTap: () -> Void
     
     // チェックボックスの表示
     var body: some View {
-        Button(action: didTap) {
+        Button(action: {
+            isChecked.toggle()
+            didTap()
+        }) {
             checkImage
         }
     }
@@ -30,6 +33,6 @@ struct CheckBox: View {
 
 struct CheckBox_Previews: PreviewProvider {
     static var previews: some View {
-        CheckBox(isChecked: true, didTap: {})
+        CheckBox(isChecked: .constant(true), didTap: {})
     }
 }

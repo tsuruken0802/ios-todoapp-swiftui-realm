@@ -9,7 +9,7 @@ import Combine
 import RealmSwift
 
 class TodoListViewModel: ObservableObject {
-    let repository: TodoRepository
+    private let repository: TodoRepository
     private(set) var todos: Results<Todo>!
     private var notificationToken: NotificationToken?
     private(set) var objectWillChange: ObservableObjectPublisher = .init()

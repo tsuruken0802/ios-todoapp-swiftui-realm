@@ -25,7 +25,7 @@ struct TodoItemView: View {
                 onCommitText(viewModel.todoDto)
             })
             Spacer()
-            CheckBox(isChecked: viewModel.todoDto.done, didTap: {
+            CheckBox(isChecked: $viewModel.todoDto.done, didTap: {
                 didTapCheck(viewModel.todoDto)
             })
         }

@@ -17,8 +17,8 @@ struct TodoListView: View {
                 ForEach(viewModel.todos) { todo in
                     TodoItemView(todo: todo) { dto in
                         viewModel.updateTodo(todo: todo, dto: dto)
-                    } didTapCheck: { todoDto in
-                        
+                    } didTapCheck: { dto in
+                        viewModel.updateTodo(todo: todo, dto: dto)
                     }
                 }
                 TodoItemView(todo: Todo(), onCommitText: { text in
