@@ -19,6 +19,12 @@ struct TodoItemView: View {
         self.didTapCheck = didTapCheck
     }
     
+    init(dto: TodoDto, onCommitText: @escaping (_ todoDto: TodoDto) -> Void, didTapCheck: @escaping (_ todoDto: TodoDto) -> Void) {
+        self.viewModel = TodoItemViewModel(dto: dto)
+        self.onCommitText = onCommitText
+        self.didTapCheck = didTapCheck
+    }
+    
     var body: some View {
         HStack {
             TextField("Todoを入力してください", text: $viewModel.todoDto.name, onCommit: {

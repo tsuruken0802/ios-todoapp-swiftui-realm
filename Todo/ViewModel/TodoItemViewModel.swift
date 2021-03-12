@@ -14,4 +14,8 @@ class TodoItemViewModel: ObservableObject {
     init(todo: Todo) {
         self._todoDto = Published<TodoDto>(initialValue: TodoDto(name: todo.name, done: todo.done))
     }
+    
+    init(dto: TodoDto) {
+        self._todoDto = Published<TodoDto>(initialValue: dto)
+    }
 }

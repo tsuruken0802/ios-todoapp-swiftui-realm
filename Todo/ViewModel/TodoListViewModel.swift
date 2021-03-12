@@ -8,25 +8,26 @@
 import Combine
 import RealmSwift
 
-enum Sort {
+enum Sort: String {
     case createdAt
     case updatedAt
 }
 
 class TodoListViewModel: ObservableObject {
     private let repository: TodoRepository
-    private(set) var todos: Results<Todo>
+    private(set) var todos: Results<Todo>!
     private var notificationToken: NotificationToken?
     private(set) var objectWillChange: ObservableObjectPublisher = .init()
     @Published var sort: Sort = .createdAt {
         didSet {
+            loadTodos()
             objectWillChange.send()
         }
     }
 
     init(repository: TodoRepository) {
         self.repository = repository
-        todos = repository.getTodos()
+        loadTodos()
         initNotification()
     }
     
@@ -50,7 +51,7 @@ class TodoListViewModel: ObservableObject {
 
 extension TodoListViewModel {
     private func loadTodos() {
-        todos = repository.getTodos()
+        todos = repository.getTodos(sortBy: sort.rawValue, ascending: false)
     }
     
     private func initNotification() {

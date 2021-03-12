@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 protocol TodoRepository {
-    func getTodos() -> Results<Todo>
+    func getTodos(sortBy: String, ascending: Bool) -> Results<Todo>
     
     func addTodo(todo: Todo)
     
@@ -19,8 +19,8 @@ protocol TodoRepository {
 }
 
 class TodoRepositoryImpl: TodoRepository {
-    func getTodos() -> Results<Todo> {
-        return try! Realm().objects(Todo.self)
+    func getTodos(sortBy: String, ascending: Bool) -> Results<Todo> {
+        return try! Realm().objects(Todo.self).sorted(byKeyPath: sortBy, ascending: ascending)
     }
     
     func addTodo(todo: Todo) {
@@ -35,6 +35,7 @@ class TodoRepositoryImpl: TodoRepository {
         try! realm.write {
             todo.name = dto.name
             todo.done = dto.done
+            todo.updatedAt = Date()
         }
     }
     

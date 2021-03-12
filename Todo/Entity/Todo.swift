@@ -12,6 +12,8 @@ class Todo: Object, ObjectKeyIdentifiable {
     @objc dynamic var _id = ObjectId.generate()
     @objc dynamic var name: String = ""
     @objc dynamic var done: Bool = false
+    @objc dynamic var createdAt: Date = Date()
+    @objc dynamic var updatedAt: Date = Date()
     
     init(name: String, done: Bool) {
         self.name = name
