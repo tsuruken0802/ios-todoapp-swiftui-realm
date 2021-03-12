@@ -15,12 +15,22 @@ struct TodoListView: View {
         NavigationView {
             List {
                 ForEach(viewModel.todos) { todo in
-                    TodoItemView(todo: todo) { dto in
-                        viewModel.updateTodo(todo: todo, dto: dto)
-                    } didTapCheck: { dto in
-                        viewModel.updateTodo(todo: todo, dto: dto)
+                    if todo.isInvalidated {
+                       EmptyView()
+                    }
+                    else {
+                        TodoItemView(todo: todo) { dto in
+                            viewModel.updateTodo(todo: todo, dto: dto)
+                        } didTapCheck: { dto in
+                            viewModel.updateTodo(todo: todo, dto: dto)
+                        }
                     }
                 }
+                .onDelete(perform: { indexSet in
+                    if let index: Int = indexSet.first {
+                        viewModel.deleteTodo(index: index)
+                    }
+                })
                 TodoItemView(todo: Todo(), onCommitText: { text in
                     viewModel.addTodo(name: text.name)
                 }, didTapCheck: { todoDto in

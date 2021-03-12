@@ -14,6 +14,8 @@ protocol TodoRepository {
     func addTodo(todo: Todo)
     
     func updateTodo(todo: Todo, dto: TodoDto)
+    
+    func delete(todo: Todo)
 }
 
 class TodoRepositoryImpl: TodoRepository {
@@ -33,6 +35,13 @@ class TodoRepositoryImpl: TodoRepository {
         try! realm.write {
             todo.name = dto.name
             todo.done = dto.done
+        }
+    }
+    
+    func delete(todo: Todo) {
+        let realm: Realm = try! .init()
+        try! realm.write {
+            realm.delete(todo)
         }
     }
 }

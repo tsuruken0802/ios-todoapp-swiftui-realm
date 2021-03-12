@@ -10,14 +10,18 @@ import RealmSwift
 
 class TodoListViewModel: ObservableObject {
     private let repository: TodoRepository
-    private(set) var todos: Results<Todo>!
+    private(set) var todos: Results<Todo>
     private var notificationToken: NotificationToken?
-    private(set) var objectWillChange: ObservableObjectPublisher = .init()
+     var objectWillChange: ObservableObjectPublisher = .init()
 
     init(repository: TodoRepository) {
         self.repository = repository
-        loadTodos()
+        todos = repository.getTodos()
         initNotification()
+    }
+    
+    deinit {
+        notificationToken?.invalidate()
     }
 
     func addTodo(name: String) {
@@ -26,6 +30,11 @@ class TodoListViewModel: ObservableObject {
     
     func updateTodo(todo: Todo, dto: TodoDto) {
         repository.updateTodo(todo: todo, dto: dto)
+    }
+    
+    func deleteTodo(index: Int) {
+        if index < 0 || index >= todos.count { return }
+        repository.delete(todo: todos[index])
     }
 }
 
