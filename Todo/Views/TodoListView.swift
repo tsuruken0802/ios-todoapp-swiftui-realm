@@ -41,14 +41,14 @@ struct TodoListView: View {
             .toolbar(content: {
                 Menu(content: {
                     Button(action: {
-                        viewModel.sort = .createdAt
+                        viewModel.ascendingOrder = true
                     }) {
-                        menuLabel(sort: .createdAt, label: "作成順")
+                        menuLabel(ascending: true, title: "Ascending Order")
                     }
                     Button(action: {
-                        viewModel.sort = .updatedAt
+                        viewModel.ascendingOrder = false
                     }) {
-                        menuLabel(sort: .updatedAt, label: "更新順")
+                        menuLabel(ascending: false, title: "Descending Order")
                     }
                 }, label: {
                     Image(systemName: "arrow.up.arrow.down")
@@ -57,10 +57,10 @@ struct TodoListView: View {
         }
     }
     
-    private func menuLabel(sort: Sort, label: String) -> some View {
-        viewModel.sort == sort ?
-            ViewBuilder.buildEither(first: Label(label, systemImage: "checkmark")):
-            ViewBuilder.buildEither(second: Text(label))
+    private func menuLabel(ascending: Bool, title: String) -> some View {
+        viewModel.ascendingOrder == ascending ?
+            ViewBuilder.buildEither(first: Label(title, systemImage: "checkmark")):
+            ViewBuilder.buildEither(second: Text(title))
     }
 }
 
